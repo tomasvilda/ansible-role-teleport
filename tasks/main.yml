@@ -10,6 +10,7 @@
   package:
     name: make
     state: present
+  become: yes
 
 - name: Unarchive teleport.
   unarchive:
@@ -32,6 +33,7 @@
     owner: "root"
     group: "root"
     mode: 0600
+  become: yes
 
 - include_tasks: configure-Systemd.yml
   when: ansible_service_mgr == 'systemd'
@@ -47,3 +49,4 @@
     name: 'teleport'
     state: 'started'
     enabled: yes
+  become: yes

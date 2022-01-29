@@ -1,17 +1,14 @@
 # Ansible Role: Teleport
 
-[![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-woohgit.teleport-blue.svg)](https://galaxy.ansible.com/woohgit/teleport/) [![Build Status](https://travis-ci.org/woohgit/ansible-role-teleport.svg?branch=master)](https://travis-ci.org/woohgit/ansible-role-teleport)
-
-An Ansible Role that installs [Teleport](https://gravitational.com/teleport/) on RHEL/CentOS, Debian/Ubuntu, SUSE.
+An Ansible Role that installs [Teleport](https://goteleport.com/) on RHEL/CentOS, Debian/Ubuntu, SUSE.
 
 Teleport is an SSH for Clusters and Teams
 
 ## Install
 
 ```
-ansible-galaxy install woohgit.teleport
+ansible-galaxy install git+https://github.com/tomasvilda/ansible-role-teleport
 ```
-
 
 ## Requirements
 
@@ -21,8 +18,8 @@ You will need to provide your own SSL certificate and key files. You can generat
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
-    teleport_version: "2.3.5"
-    teleport_url: "https://github.com/gravitational/teleport/releases/download/v{{ teleport_version }}/teleport-v{{ teleport_version }}-linux-amd64-bin.tar.gz"
+    teleport_version: "8.1.1"
+    teleport_url: "https://get.gravitational.com/teleport-v{{ teleport_version }}-linux-amd64-bin.tar.gz"
     teleport_ssl_cert_path: "/etc/teleport"
     teleport_config_path: "/etc/teleport.yaml"
     teleport_nodename: "teleport"
@@ -101,7 +98,7 @@ For more details about teleport architecture, please refer to the [official docu
       vars_files:
         - vars/main.yml
       roles:
-        - { role: woohgit.teleport }
+        - { role: ansible-role-teleport }
 
 
 *Inside `vars/main.yml`*
@@ -121,7 +118,7 @@ You can automatically connect a node to the proxy server by providing same same 
       vars_files:
         - vars/main.yml
       roles:
-        - { role: woohgit.teleport }
+        - { role: ansible-role-teleport }
 
 
 *Inside `vars/main.yml`*:
